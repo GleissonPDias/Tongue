@@ -1,0 +1,39 @@
+.formLogin {
+  display: flex;
+  flex-direction: column; /* empilha inputs e botões verticalmente */
+  gap: 1rem; /* espaçamento entre elementos */
+  background-color: rgba(0, 0, 0, 0.432);
+  justify-content: center;
+  align-items: center; /* centraliza horizontalmente todos os elementos */
+  padding: 20px;
+  max-width: 300px; /* limite do formulário */
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Inputs do form */
+.formLogin input {
+  width: 100%; /* ocupa toda a largura do form, até o max-width do form */
+  max-width: 250px; /* largura máxima para não ficar esticado */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Botões do form */
+.formLogin button {
+  width: 100px; /* largura fixa */
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Container dos botões (lado a lado) */
+.formLogin .buttonsContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* centraliza os botões horizontalmente */
+  width: 100%; /* para ocupar a largura do form */
+  max-width: 250px; /* alinhamento com os inputs */
+}
