@@ -38,7 +38,7 @@ export function UserScreen() {
           }
         } catch (err) {
           setError("Resposta do servidor não é JSON válido");
-          console.error("Resposta completa:", text);
+          console.error("Resposta completa:", text, err);
         }
       })
       .catch((err) => {

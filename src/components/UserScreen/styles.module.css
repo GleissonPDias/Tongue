@@ -1,5 +1,18 @@
 .content {
+  display: grid;
+  width: 375px;
+  height: 750px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(165, 42, 42, 0.192);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
 }
 .content textarea {
   padding: 100px;
+}
+.content img {
+  grid-column-start: 3;
+  grid-column-end: 7;
+  grid-row-start: 7;
 }
