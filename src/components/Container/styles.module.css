@@ -9,5 +9,13 @@
   justify-content: center; /* centraliza verticalmente */
   align-items: center; /* centraliza horizontalmente */
   height: 100vh;
-  background-color: brown;
+  background-color: var(--color-3);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza verticalmente */
+  align-items: center; /* centraliza horizontalmente */
+  height: 100vh;
+  background-color: var(--color-3);
 }

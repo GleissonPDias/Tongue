@@ -1,4 +1,7 @@
 .container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center; /* centraliza verticalmente */
@@ -8,8 +11,8 @@
 }
 .buttonsGroup {
   display: flex;
-  margin: 10px;
   gap: 3rem;
+  margin: 10px;
 }
 .erase {
   outline: 1px solid red;

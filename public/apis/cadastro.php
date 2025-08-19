@@ -1,16 +1,33 @@
 <?php
+
+// Permitir qualquer origem
+header("Access-Control-Allow-Origin: *");
+
+// Permitir métodos
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
+// Permitir cabeçalhos
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Se for pré-requisição (OPTIONS), apenas retorna ok
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 header('Content-Type: application/json');
 session_start();
 
 try {
     require_once('conexao_db.php');
 
-    // Lê os dados da requisição POST
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $security_phrase = $_POST['security_phrase'] ?? '';
+$input = json_decode(file_get_contents('php://input'), true);
+
+$username = $input['username'] ?? '';
+$password = $input['password'] ?? '';
+$confirm_password = $input['confirm_password'] ?? '';
+$email = $input['email'] ?? '';
+$security_phrase = $input['security_phrase'] ?? '';
 
     // Verifica se as senhas coincidem
     if ($password !== $confirm_password) {

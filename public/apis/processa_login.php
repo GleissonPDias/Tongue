@@ -1,27 +1,21 @@
 <?php
 // Permitir qualquer origem
 header("Access-Control-Allow-Origin: *");
-
-// Permitir métodos
 header("Access-Control-Allow-Methods: POST, OPTIONS");
-
-// Permitir cabeçalhos
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-// Se for pré-requisição (OPTIONS), apenas retorna ok
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-// Aqui vai o resto do seu código de login
 header('Content-Type: application/json');
 
-// Iniciar sessão
-session_start();
+require_once __DIR__ . '/../../vendor/autoload.php';
+use \Firebase\JWT\JWT;
+use \Firebase\JWT\Key;
 
 try {
-    // Conexão PDO
     require_once('conexao_db.php');
 
     // Ler dados JSON do fetch
@@ -39,29 +33,39 @@ try {
         $user = $query->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($senha, $user['senha'])) {
-            $_SESSION['admin_logado'] = true;
+            // Definir payload do JWT
+            $payload = [
+                'id' => $user['id_user'],
+                'nome' => $user['name'],
+                'email' => $user['email'],
+                'iat' => time(),             // emitido em
+                'exp' => time() + 3600       // expira em 1h
+            ];
+
+            // Chave secreta (alterar para algo mais seguro e guardar fora do código)
+            $secretKey = 'minha_chave_super_secreta';
+
+            // Gerar token
+            $jwt = JWT::encode($payload, $secretKey, 'HS256');
 
             echo json_encode([
                 "success" => true,
                 "message" => "Login realizado com sucesso",
-                "user" => [
-                    "id" => $user['id'],
-                    "nome" => $user['name'],
-                    "email" => $user['email']
-                ]
+                'id_user' => $user['id_user'],
+                "token" => $jwt
             ]);
             exit;
         } else {
             echo json_encode([
                 "success" => false,
-                "message" => "Senha incorreta"
+                "message" => "Email ou Senha incorreta"
             ]);
             exit;
         }
     } else {
         echo json_encode([
             "success" => false,
-            "message" => "E-mail não encontrado"
+            "message" => "Email ou Senha incorreta"
         ]);
         exit;
     }

@@ -6,7 +6,9 @@ type InputLoginProps = {
   name: string;
   value?: string;
   htmlFor: string;
-  onChange?: () => void;
+  placeholder: string;
+  required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 export function InputLogin({
   label,
@@ -15,6 +17,8 @@ export function InputLogin({
   id,
   name,
   value,
+  placeholder,
+  required,
   onChange,
 }: InputLoginProps) {
   return (
@@ -25,7 +29,9 @@ export function InputLogin({
         type={type}
         id={id}
         name={name}
+        placeholder={placeholder}
         value={value}
+        required={required}
         onChange={onChange}
       />
     </>
