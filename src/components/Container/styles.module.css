@@ -9,7 +9,8 @@
   justify-content: center; /* centraliza verticalmente */
   align-items: center; /* centraliza horizontalmente */
   height: 100vh;
-  background-color: var(--color-3);
+
+  background-color: var(--color-7);
 }
 .content {
   display: flex;

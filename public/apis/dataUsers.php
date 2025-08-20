@@ -66,7 +66,7 @@ try {
     $decoded = JWT::decode($jwt, new Key($secretKey, 'HS256'));
 
     // Buscar apenas o usuário logado
-    $stmt = $pdo->prepare("SELECT id_user, name, email FROM users WHERE id_user = :id");
+    $stmt = $pdo->prepare("SELECT id_user, name, email, bio FROM users WHERE id_user = :id");
     $stmt->bindValue(':id', $decoded->id, PDO::PARAM_INT);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);

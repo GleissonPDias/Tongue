@@ -1,4 +1,8 @@
 import styles from "./styles.module.css";
-export function ImgUser() {
-  return <img className={styles.img} src="panda.jpg" />;
+
+type ImgUserProps = {
+  src: string;
+};
+export function ImgUser({ src }: ImgUserProps) {
+  return <img className={styles.img} src={src} />;
 }
