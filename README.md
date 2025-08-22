@@ -47,3 +47,9 @@ Sistema de comentários nas notícias
 Sistema de curtidas visíveis para todos os usuários
 
 Melhorias na interface em React (mais interatividade e design responsivo)
+
+<img width="358" height="777" alt="image" src="https://github.com/user-attachments/assets/e5b84b43-5813-4ca0-8f79-2d20f1586e9a" />
+<img width="352" height="775" alt="image" src="https://github.com/user-attachments/assets/f105fbcb-dff0-4f76-a4c8-f2afc2b486b6" />
+<img width="359" height="728" alt="image" src="https://github.com/user-attachments/assets/e2f5e6bf-9c9d-4f93-8ad5-d8917f34a563" />
+
+
