@@ -1,3 +1,11 @@
+html,
+body {
+  height: 100%;
+  margin: 0; /* remove espaçamento padrão */
+  padding: 0; /* idem */
+  background: #222831; /* opcional: garante que o fundo todo seja escuro */
+  overflow: hidden; /* tira scroll vertical e horizontal */
+}
 .container {
   margin: 0;
   padding: 0;

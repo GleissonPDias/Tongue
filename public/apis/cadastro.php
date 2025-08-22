@@ -28,6 +28,7 @@ $password = $input['password'] ?? '';
 $confirm_password = $input['confirm_password'] ?? '';
 $email = $input['email'] ?? '';
 $security_phrase = $input['security_phrase'] ?? '';
+$bio = $input['bio'] ?? '';
 
     // Verifica se as senhas coincidem
     if ($password !== $confirm_password) {
@@ -57,13 +58,15 @@ $security_phrase = $input['security_phrase'] ?? '';
     // Cadastra o novo usuário
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO users (name, email, senha, security_phrase)
-            VALUES (:username, :email, :password, :security_phrase)";
+    $sql = "INSERT INTO users (name, email, senha, security_phrase, bio)
+            VALUES (:username, :email, :password, :security_phrase, :bio)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->bindParam(':password', $hashed_password, PDO::PARAM_STR);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':security_phrase', $security_phrase, PDO::PARAM_STR);
+    $stmt->bindParam(':bio', $bio, PDO::PARAM_STR);
+
 
     $stmt->execute();
 

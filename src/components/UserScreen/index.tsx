@@ -1,9 +1,13 @@
-import { PenBoxIcon } from "lucide-react";
 import { Container } from "../Container";
 import { ImgUser } from "../ImgUser";
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import { UploadPhoto } from "../UploadPhoto";
+
+import { IoIosNotifications, IoIosSearch, IoMdSettings } from "react-icons/io";
+import { CgFeed } from "react-icons/cg";
+import { IoHome } from "react-icons/io5";
+import { LuMessagesSquare } from "react-icons/lu";
 
 export function UserScreen() {
   interface User {
@@ -60,6 +64,13 @@ export function UserScreen() {
             src={`http://192.168.100.4:8000/apis/get_photo.php?id_user=${user.id_user}&t=${photoUpdateKey}`}
           />
         )}
+        {user && (
+          <UploadPhoto
+            className={styles.btnUpload}
+            userId={user.id_user}
+            onUploadSuccess={() => setPhotoUpdateKey(Date.now())}
+          />
+        )}
         {loading ? (
           <p>Carregando usuário...</p>
         ) : error ? (
@@ -72,7 +83,12 @@ export function UserScreen() {
           <p>Nenhum usuário encontrado</p>
         )}
         {user && <p className={styles.about}>{user.bio}</p>}
-        <PenBoxIcon color="green" />
+        <div className={styles.config}>
+          <IoMdSettings size={30} />
+        </div>
+        <div className={styles.feed}>
+          <CgFeed size={30} color="#03bfcb" />
+        </div>
         <div className={styles.buttons}>
           <button className={styles.primary}>Message</button>
           <button className={styles.ghost}>Following</button>
@@ -87,15 +103,22 @@ export function UserScreen() {
             <li>Pop</li>
             <li>Novelas</li>
             <li>Famosos</li>
-            <li>Fofocas</li>
           </ul>
         </div>
-        {user && (
-          <UploadPhoto
-            userId={user.id_user}
-            onUploadSuccess={() => setPhotoUpdateKey(Date.now())}
-          />
-        )}
+        <div className={styles.navbar}>
+          <ul>
+            <IoIosSearch />
+          </ul>
+          <ul>
+            <IoHome />
+          </ul>
+          <ul>
+            <LuMessagesSquare />
+          </ul>
+          <ul>
+            <IoIosNotifications />
+          </ul>
+        </div>
       </div>
     </Container>
   );

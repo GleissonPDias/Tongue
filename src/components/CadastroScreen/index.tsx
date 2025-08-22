@@ -6,6 +6,7 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 import { ArrowLeft, Atom, EraserIcon, LogInIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Commit } from "../Commit";
 
 export function CadastroScreen() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ export function CadastroScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [securityPhrase, setSecurityPhrase] = useState("");
+  const [bio, setBio] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +25,8 @@ export function CadastroScreen() {
       !password ||
       !confirmPassword ||
       !username ||
-      !securityPhrase
+      !securityPhrase ||
+      !bio
     ) {
       alert("Por favor, preencha todos os campos.");
       return;
@@ -46,6 +49,7 @@ export function CadastroScreen() {
             password,
             confirm_password: confirmPassword,
             username,
+            bio,
             security_phrase: securityPhrase,
           }),
         }
@@ -61,6 +65,7 @@ export function CadastroScreen() {
       setConfirmPassword("");
       setUsername("");
       setSecurityPhrase("");
+      setBio("");
     } catch (err) {
       console.error(err);
       alert("Erro ao tentar cadastrar. Tente novamente.");
@@ -73,6 +78,7 @@ export function CadastroScreen() {
     setConfirmPassword("");
     setUsername("");
     setSecurityPhrase("");
+    setBio("");
   };
 
   return (
@@ -82,7 +88,7 @@ export function CadastroScreen() {
           <ArrowLeft />
         </Link>
 
-        <Atom size="80" color="#3ec9a7" />
+        <Atom size="50" color="#3ec9a7" />
 
         <InputLogin
           type="text"
@@ -133,6 +139,17 @@ export function CadastroScreen() {
           placeholder="Interestelar2025"
           value={securityPhrase}
           onChange={(e) => setSecurityPhrase(e.target.value)}
+        />
+        <label htmlFor="bio">Bio</label>
+        <Commit
+          id="bio"
+          name="bio"
+          className="bio"
+          value={bio}
+          placeholder="Eu gosto de ler sobre...tenho Xanos...meu hobbie é..."
+          rows={3}
+          maxlength={110}
+          onChange={(e) => setBio(e.target.value)}
         />
 
         <div className={styles.buttonsGroup}>

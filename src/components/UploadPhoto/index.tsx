@@ -1,9 +1,16 @@
+import { FaPen } from "react-icons/fa";
+
 type UploadPhotoProps = {
+  className?: string;
   userId: number;
   onUploadSuccess?: () => void; // 👈 nova prop
 };
 
-export function UploadPhoto({ userId, onUploadSuccess }: UploadPhotoProps) {
+export function UploadPhoto({
+  userId,
+  onUploadSuccess,
+  className,
+}: UploadPhotoProps) {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
@@ -17,7 +24,7 @@ export function UploadPhoto({ userId, onUploadSuccess }: UploadPhotoProps) {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/apis/upload_photo.php",
+        "http://192.168.100.4:8000/apis/upload_photo.php",
         {
           method: "POST",
           body: formData,
@@ -39,5 +46,15 @@ export function UploadPhoto({ userId, onUploadSuccess }: UploadPhotoProps) {
     }
   };
 
-  return <input type="file" accept="image/*" onChange={handleFileChange} />;
+  return (
+    <label className={className} style={{ cursor: "pointer" }}>
+      <FaPen color="black" />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        style={{ display: "none" }} // escondido
+      />
+    </label>
+  );
 }

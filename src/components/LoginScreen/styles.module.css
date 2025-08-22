@@ -5,7 +5,6 @@
   align-items: center; /* centraliza horizontalmente */
   height: 100%;
   width: 100%;
-  background-color: var(--color-4);
 }
 .buttonsGroup {
   display: flex;

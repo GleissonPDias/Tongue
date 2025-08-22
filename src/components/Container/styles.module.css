@@ -10,7 +10,7 @@
   align-items: center; /* centraliza horizontalmente */
   height: 100vh;
 
-  background-color: var(--color-7);
+  background: linear-gradient(to bottom, #222831, #02899c);
 }
 .content {
   display: flex;
