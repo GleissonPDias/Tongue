@@ -1,19 +1,26 @@
 <?php
+// Caminho para o arquivo SQLite
+$path = __DIR__ . "/../db.db"; // ajuste conforme seu projeto
 
-$host='localhost:3307';
-$db='users_db';
-$user='adm';
-$pass='password';
-$charset='utf8mb4';
+$dsn = "sqlite:" . $path;
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-try{
-    $pdo = new PDO($dsn, $user, $pass);
+try {
+    $pdo = new PDO($dsn);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    // Pode registrar o erro em um arquivo log
+
+    // Cria tabela se não existir
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS users (
+            id_user INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE,
+            senha TEXT NOT NULL,
+            security_phrase TEXT,
+            bio TEXT
+        )
+    ");
+} catch (PDOException $e) {
     error_log("Erro DB: " . $e->getMessage());
-    // Ou relançar a exceção para ser capturada no seu script PHP principal
     throw $e;
-};
+}
+?>
