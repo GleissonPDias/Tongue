@@ -1,4 +1,12 @@
 .bio {
   background-color: var(--color-5);
   font-style: italic;
+
+  width: 90%; /* ocupa quase toda a largura do container */
+  min-height: 100px; /* garante altura mínima confortável */
+  resize: vertical; /* deixa o usuário aumentar se quiser */
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }

@@ -8,15 +8,18 @@
   flex-direction: column;
   justify-content: center; /* centraliza verticalmente */
   align-items: center; /* centraliza horizontalmente */
-  height: 100vh;
-
+  height: 100dvh;
+  width: 100%;
+  min-height: 0;
   background: linear-gradient(to bottom, #222831, #02899c);
 }
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centraliza verticalmente */
-  align-items: center; /* centraliza horizontalmente */
-  height: 100vh;
+  justify-content: flex-start; /* deixa os itens seguirem para baixo */
+  align-items: center;
+  width: 100%;
+  max-height: 100dvh; /* limite máximo na tela */
+  overflow-y: auto; /* ativa scroll vertical */
   background-color: var(--color-3);
 }

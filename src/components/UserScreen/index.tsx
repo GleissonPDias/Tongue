@@ -3,11 +3,8 @@ import { ImgUser } from "../ImgUser";
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import { UploadPhoto } from "../UploadPhoto";
-
-import { IoIosNotifications, IoIosSearch, IoMdSettings } from "react-icons/io";
-import { CgFeed } from "react-icons/cg";
-import { IoHome } from "react-icons/io5";
-import { LuMessagesSquare } from "react-icons/lu";
+import { Navbar } from "../Navbar";
+import { IoMdSettings } from "react-icons/io";
 
 export function UserScreen() {
   interface User {
@@ -84,10 +81,7 @@ export function UserScreen() {
         )}
         {user && <p className={styles.about}>{user.bio}</p>}
         <div className={styles.config}>
-          <IoMdSettings size={30} />
-        </div>
-        <div className={styles.feed}>
-          <CgFeed size={30} color="#03bfcb" />
+          <IoMdSettings size={30} color="#03bfcb" />
         </div>
         <div className={styles.buttons}>
           <button className={styles.primary}>Message</button>
@@ -105,20 +99,7 @@ export function UserScreen() {
             <li>Famosos</li>
           </ul>
         </div>
-        <div className={styles.navbar}>
-          <ul>
-            <IoIosSearch />
-          </ul>
-          <ul>
-            <IoHome />
-          </ul>
-          <ul>
-            <LuMessagesSquare />
-          </ul>
-          <ul>
-            <IoIosNotifications />
-          </ul>
-        </div>
+        <Navbar />
       </div>
     </Container>
   );

@@ -1,23 +1,33 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* evita scroll duplo na página */
+}
 .formLogin {
-  position: relative;
   display: flex;
-  flex-direction: column; /* empilha inputs e botões verticalmente */
-  gap: 0.8rem; /* espaçamento entre elementos */
-  background-color: var(--color-1);
-  justify-content: center;
-  align-items: center; /* centraliza horizontalmente todos os elementos */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 👈 não centralizar verticalmente */
+
+  gap: 0.8rem;
   padding: 20px;
-  max-width: 320px; /* limite do formulário */
   width: 100%;
+  max-width: 320px;
+  max-height: 90dvh; /* 👈 limite de altura */
+  overflow-y: auto; /* rolagem interna */
+  -webkit-overflow-scrolling: touch;
+
+  background-color: var(--color-1);
   border-radius: 8px;
 }
-
 /* Inputs do form */
 .formLogin input,
-textarea {
+.formLogin textarea {
   font-style: italic;
-  width: 100%; /* ocupa toda a largura do form, até o max-width do form */
-  max-width: 200px; /* largura máxima para não ficar esticado */
+  width: 100%;
+  max-width: 200px;
   padding: 11px;
   border-radius: 5px;
   border: none;
@@ -25,30 +35,32 @@ textarea {
   background-color: var(--color-6);
   transition: all 0.1s ease-in-out;
   resize: none;
-  &:hover {
-    border-bottom: 3px solid var(--color-3);
-  }
-  &:focus {
-    border: 3px solid var(--color-3);
-  }
+}
+.formLogin input:hover,
+.formLogin textarea:hover {
+  border-bottom: 3px solid var(--color-3);
+}
+.formLogin input:focus,
+.formLogin textarea:focus {
+  border: 3px solid var(--color-3);
 }
 
 /* Botões do form */
 .formLogin button {
-  width: 75px; /* largura fixa */
+  width: 75px;
   padding: 7px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
 }
+
+/* Link no topo do form */
 .formLogin > a {
   position: absolute;
-  top: 10px; /* distância do topo */
-  left: 10px; /* distância da esquerda */
+  top: 10px;
+  left: 10px;
   color: var(--color-6);
-  &:hover {
-    color: var(--color-3);
-  }
 }
-
-/* Container dos botões (lado a lado) */
+.formLogin > a:hover {
+  color: var(--color-3);
+}

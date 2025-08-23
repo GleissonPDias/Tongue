@@ -87,6 +87,7 @@ export function CadastroScreen() {
         <Link to="/">
           <ArrowLeft />
         </Link>
+
         <Atom size="50" color="#3ec9a7" />
 
         <InputLogin
@@ -150,6 +151,7 @@ export function CadastroScreen() {
           maxlength={110}
           onChange={(e) => setBio(e.target.value)}
         />
+
         <div className={styles.buttonsGroup}>
           <ButtonsLogin
             className={styles.erase}

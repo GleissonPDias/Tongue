@@ -1,0 +1,36 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.news {
+  min-height: 100vh; /* ocupa altura total */
+  display: flex;
+  align-items: center; /* centraliza vertical */
+  justify-content: center; /* centraliza horizontal */
+  flex-direction: column;
+  background-color: aliceblue;
+}
+.article img {
+  max-width: 350px;
+  border-radius: 5px;
+}
+.article {
+  padding: 60px;
+}
+.navbar {
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(5, 212, 212, 0.418);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 40px;
+  gap: 50px;
+}
