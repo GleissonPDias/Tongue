@@ -18,14 +18,11 @@ export function LoginScreen() {
     const senha = (form.elements.namedItem("senha") as HTMLInputElement).value;
 
     try {
-      const response = await fetch(
-        "http://192.168.100.4:8000/apis/processa_login.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, senha }),
-        }
-      );
+      const response = await fetch("http://localhost/apis/processa_login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha }),
+      });
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("token", data.token);

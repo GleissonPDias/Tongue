@@ -23,13 +23,10 @@ export function UploadPhoto({
     formData.append("photo", file);
 
     try {
-      const response = await fetch(
-        "http://192.168.100.4:8000/apis/upload_photo.php",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("http://localhost/apis/upload_photo.php", {
+        method: "POST",
+        body: formData,
+      });
 
       const result = await response.json();
       if (result.success) {

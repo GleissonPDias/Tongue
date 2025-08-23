@@ -39,21 +39,18 @@ export function CadastroScreen() {
     }
 
     try {
-      const response = await fetch(
-        "http://192.168.100.4:8000/apis/cadastro.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email,
-            password,
-            confirm_password: confirmPassword,
-            username,
-            bio,
-            security_phrase: securityPhrase,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost/apis/cadastro.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+          confirm_password: confirmPassword,
+          username,
+          bio,
+          security_phrase: securityPhrase,
+        }),
+      });
 
       const data = await response.json();
       alert(data.message);
