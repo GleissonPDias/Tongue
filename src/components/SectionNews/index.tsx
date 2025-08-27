@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Navbar } from "../Navbar";
-import { PiTShirt } from "react-icons/pi";
 
 type Article = {
   title: string;
@@ -15,7 +14,7 @@ type Article = {
 export function SectionNews() {
   const key = "0d5ecaf830424ee4be068b01992776fb";
   const search = "";
-  const category = "";
+
   const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
