@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Navbar } from "../Navbar";
+import { PiTShirt } from "react-icons/pi";
 
 type Article = {
   title: string;
@@ -12,13 +13,17 @@ type Article = {
 };
 
 export function SectionNews() {
-  const key = "8b2fcaea7a7ff647afa05c9327aba185";
+  const key = "0d5ecaf830424ee4be068b01992776fb";
+  const search = "";
+  const category = "";
   const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`https://gnews.io/api/v4/top-headlines?q=war&lang=en&apikey=${key}`)
+    fetch(
+      `https://newsapi.org/v2/everything?q=${search}&category=sports&pageSize=15&language=pt&from=2025-08-26&to=2025-08-26&sortBy=popularity&apiKey=${key}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.articles) {

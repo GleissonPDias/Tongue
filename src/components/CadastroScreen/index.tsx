@@ -39,7 +39,7 @@ export function CadastroScreen() {
     }
 
     try {
-      const response = await fetch("http://localhost/apis/cadastro.php", {
+      const response = await fetch("https://tongueapi.free.nf/cadastro.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
